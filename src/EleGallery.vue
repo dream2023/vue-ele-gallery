@@ -1,10 +1,22 @@
 <template>
   <div>
-    <ele-gallery-thumb
-      :images="thumbs"
-      :thumbStyle="thumbStyle"
-      @preview="handlePreview"
-    />
+    <!-- 预览图 -->
+    <div
+      :key="index"
+      @click="handlePreview(index)"
+      class="ele-gallery-thumb-wrapper"
+      v-for="(thumb, index) of thumbs"
+    >
+      <slot v-bind:thumb="thumb">
+        <img
+          :key="index"
+          :src="thumb"
+          :style="thumbStyle"
+          class="ele-gallery-thumb-image"
+        >
+      </slot>
+    </div>
+
     <ele-gallery-dialog
       :carouselAttrs="carouselAttrs"
       :images="computedImages"
@@ -14,7 +26,6 @@
 </template>
 
 <script>
-import EleGalleryThumb from './components/EleGalleryThumb'
 import EleGalleryDialog from './components/EleGalleryDialog'
 
 export default {
@@ -27,7 +38,6 @@ export default {
     carouselAttrs: Object
   },
   components: {
-    EleGalleryThumb,
     EleGalleryDialog
   },
   computed: {
@@ -83,3 +93,16 @@ export default {
   }
 }
 </script>
+
+<style>
+.ele-gallery-thumb-wrapper {
+  display: inline-block;
+}
+.ele-gallery-thumb-image {
+  cursor: pointer;
+  height: auto;
+  width: 100px;
+  margin-right: 8px;
+  border-radius: 5%;
+}
+</style>

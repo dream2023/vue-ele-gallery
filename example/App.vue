@@ -34,7 +34,8 @@
       ]"
     ></ele-gallery>
 
-    <h1>定制化缩略图样式</h1>
+    <h1>定制化缩略图</h1>
+    <h3>样式自定义</h3>
     <ele-gallery
       :image="[
         'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
@@ -46,7 +47,25 @@
         width: '150px'
       }"
     ></ele-gallery>
-
+    <h3>插槽</h3>
+    <ele-gallery
+      :image="[
+        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+      ]"
+    >
+      <template v-slot:default="{thumb}">
+        <el-card
+          :body-style="{ padding: '12px' }"
+          style="margin-right: 20px;"
+        >
+          <img
+            :src="thumb"
+            style="width: 150px"
+          >
+        </el-card>
+      </template>
+    </ele-gallery>
     <h1>定制化轮播图属性</h1>
     <ele-gallery
       :carousel-attrs="{

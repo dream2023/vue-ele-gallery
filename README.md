@@ -100,6 +100,20 @@ export default {
     width: '200px'
   }"
 />
+
+<!-- 插槽 -->
+<ele-gallery
+  :image="[
+    'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+    'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+  ]"
+>
+  <template v-slot:default="{thumb}">
+    <el-card :body-style="{ padding: '12px' }" style="margin-right: 20px;">
+      <img :src="thumb" style="width: 150px" />
+    </el-card>
+  </template>
+</ele-gallery>
 ```
 
 ### 定制化轮播图

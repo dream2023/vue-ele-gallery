@@ -52,8 +52,8 @@ export default {
   },
   methods: {
     startPreview (index) {
-      this.initialIndex = index
       this.isShowPreview = true
+      this.initialIndex = index
       this.title = this.images[index].title
     },
     handleCarouselChange (index) {
