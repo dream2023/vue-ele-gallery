@@ -135,7 +135,15 @@
           <pre class="language-js">
             <code class="language-js">
               props: {
-                image: [String, Array, Object],
+                // 类型(支持图片, 视频, iframe)
+                type: {
+                  type: String,
+                  default: 'image',
+                  validator (value) {
+                    return ['image', 'video', 'iframe'].includes(value)
+                  }
+                },
+                source: [String, Array, Object],
                 // 缩略图样式
                 thumbStyle: Object,
                 // 轮播图属性
