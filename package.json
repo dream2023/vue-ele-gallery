@@ -1,7 +1,7 @@
 {
   "name": "vue-ele-gallery",
   "description": "利用 element ui 组件库构成的画廊组件",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "scripts": {
     "build:lib": "vue build -t lib --name vue-ele-gallery -d ./dist/ ./src/index.js",
