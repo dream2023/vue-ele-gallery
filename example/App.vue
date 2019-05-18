@@ -14,7 +14,7 @@
       :image="{
         title: '秀丽山河',
         src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-        thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb.jpg'
+        thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_1.jpg'
       }"
     />
     <!-- 数组对象 -->

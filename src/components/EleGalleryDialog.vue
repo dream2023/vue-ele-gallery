@@ -1,18 +1,14 @@
 <template>
   <el-dialog
     :visible.sync="isShowPreview"
-    append-to-body
     style="text-align: center"
   >
-    <div
-      slot="title"
-      style="height: 1em"
-    >{{title}}</div>
+    <div slot="title">{{title}}</div>
     <!-- 单张图片 -->
     <img
-      :src="sources[0].src"
+      :src="images[0].src"
       class="ele-gallery-image"
-      v-if="sources.length === 1"
+      v-if="images.length === 1"
     >
 
     <!-- 多张图片 -->
@@ -25,7 +21,7 @@
     >
       <el-carousel-item
         :key="index"
-        v-for="(image, index) in sources"
+        v-for="(image, index) in images"
       >
         <img
           :src="image.src"
@@ -38,15 +34,15 @@
 
 <script>
 export default {
+  name: 'ele-gallery-dialog',
   props: {
-    sources: {
+    images: {
       type: Array
     },
     carouselAttrs: {
       type: Object
     }
   },
-  name: 'EleGalleryDialog',
   data () {
     return {
       title: '',
@@ -58,11 +54,11 @@ export default {
     startPreview (index) {
       this.initialIndex = index
       this.isShowPreview = true
-      this.title = this.sources[index].title
+      this.title = this.images[index].title
     },
     handleCarouselChange (index) {
-      if (this.sources[index] && this.sources[index].title) {
-        this.title = this.sources[index].title
+      if (this.images[index] && this.images[index].title) {
+        this.title = this.images[index].title
       } else {
         this.title = ''
       }

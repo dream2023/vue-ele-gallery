@@ -6,7 +6,7 @@
       :style="thumbStyle"
       @click="handleThumbClick(index)"
       class="ele-gallery-thumb-image"
-      v-for="(thumb, index) of thumbs"
+      v-for="(thumb, index) of images"
     >
   </div>
 </template>
@@ -14,17 +14,10 @@
 <script>
 // 缩略图展示
 export default {
-  name: 'GalleryThumb',
+  name: 'ele-gallery-thumb',
   props: {
-    thumbStyle: {
-      type: Object
-    },
-    thumbs: {
-      type: Array,
-      default () {
-        return []
-      }
-    }
+    thumbStyle: Object,
+    images: Array
   },
   methods: {
     // 点击缩略图

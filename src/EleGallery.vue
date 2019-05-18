@@ -1,13 +1,13 @@
 <template>
   <div>
     <ele-gallery-thumb
-      :thumbs="thumbs"
+      :images="thumbs"
       :thumbStyle="thumbStyle"
       @preview="handlePreview"
     />
     <ele-gallery-dialog
       :carouselAttrs="carouselAttrs"
-      :sources="computedImages"
+      :images="computedImages"
       ref="dialog"
     />
   </div>
@@ -18,7 +18,7 @@ import EleGalleryThumb from './components/EleGalleryThumb'
 import EleGalleryDialog from './components/EleGalleryDialog'
 
 export default {
-  name: 'EleGallery',
+  name: 'ele-gallery',
   props: {
     image: [String, Array, Object],
     // 缩略图样式
@@ -41,17 +41,15 @@ export default {
       const images = this.image
       if (typeof images === 'string') {
         // 传入参数为 string
-        // 例如: source: 'https://xxx.com/xx.jpg'
-        return [this.getStringSource(images)]
+        return [this.getStringImage(images)]
       } else if (images instanceof Array) {
         // 传入参数为 array, 数据里面既可以有string 又可以有 object
-        // 例如: source: [ { src: 'https://xxx.com/xx.jpg', title: 'xxx' }, 'https://xxx.com/xx.jpg' ]
         const res = []
         images.forEach((item) => {
           if (item instanceof Object) {
-            res.push(this.getObjectSource(item))
+            res.push(this.getObjectImage(item))
           } else if (typeof item === 'string') {
-            res.push(this.getStringSource(item))
+            res.push(this.getStringImage(item))
           } else {
             console.warn('数组元素错误', images, item)
           }
@@ -59,8 +57,7 @@ export default {
         return res
       } else if (images instanceof Object) {
         // 传入参数为 object
-        // 例如: source: { src: 'https://xxx.com/xx.jpg', title: 'xxx' }
-        return [this.getObjectSource(images)]
+        return [this.getObjectImage(images)]
       } else {
         return []
       }
@@ -72,16 +69,16 @@ export default {
       this.$refs.dialog.startPreview(index)
     },
     // 获取字符串形式来源
-    getStringSource (source) {
+    getStringImage (image) {
       return {
-        src: source,
-        thumb: source
+        src: image,
+        thumb: image
       }
     },
     // 获取对象形式来源
-    getObjectSource (source) {
-      source.thumb = source.thumb || source.src
-      return source
+    getObjectImage (image) {
+      image.thumb = image.thumb || image.src
+      return image
     }
   }
 }
