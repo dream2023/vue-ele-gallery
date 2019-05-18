@@ -11,7 +11,8 @@
         <p>vue-ele-gallery 利用 element ui 组件库, 打造的画廊组件, 主要特点如下:</p>
         <blockquote>
           <ul>
-            <li>可以传递 字符串(单张图片)、数组(多张图片)、对象</li>
+            <li>支持图片、h5 视频、iframe 类型</li>
+            <li>支持单个字符串、对象、数组</li>
             <li>可以设置缩略图、标题等信息</li>
           </ul>
         </blockquote>
@@ -52,7 +53,26 @@
       <section id="example">
         <h2>示例</h2>
         <div>
-          <h3>image属性的四种写法</h3>
+          <h3>type三种类型</h3>
+          <iframe
+            allowfullscreen="true"
+            allowtransparency="true"
+            frameborder="no"
+            height="265"
+            scrolling="no"
+            src="//codepen.io/dream2023/embed/BeZqpR/?height=265&theme-id=dark&default-tab=html,result"
+            style="width: 100%;"
+            title="vue-ele-gallery type的三种类型"
+          >
+            See the Pen
+            <a href="https://codepen.io/dream2023/pen/BeZqpR/">vue-ele-gallery type的三种类型</a> by 二当家的
+            (
+            <a href="https://codepen.io/dream2023">@dream2023</a>) on
+            <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+        </div>
+        <div>
+          <h3>source 的四种值</h3>
           <iframe
             allowfullscreen="true"
             allowtransparency="true"

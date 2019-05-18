@@ -9,7 +9,8 @@
 
 vue-ele-gallery 利用 element ui 组件库, 打造的画廊组件, 主要特点如下:
 
-- 可以传递 字符串(单张图片)、数组(多张图片)、对象
+- 支持图片、h5 视频、iframe 类型
+- 支持单个字符串、对象、数组
 - 可以设置缩略图、标题等信息
 
 ## 效果图
@@ -49,28 +50,67 @@ export default {
 ### 基本使用方式
 
 ```html
-<!-- 传递单张图片 -->
+<!-- 图片类型(默认) -->
 <ele-gallery
-  image="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"
+  source="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"
 />
-<!-- 传递多张图片 -->
+
+<!-- h5 视频类型 -->
 <ele-gallery
-  :image="[
+  type="video"
+  :source="{
+    title: 'Sintel',
+    src: 'https://archive.org/download/Sintel/sintel-2048-surround.mp4',
+    thumb: 'https://i.imgur.com/MUSw4Zu.jpg'
+  }"
+  :thumb-style="{
+    width: '400px'
+  }"
+/>
+
+<!-- iframe 类型 -->
+<ele-gallery
+  type="iframe"
+  :source="{
+    title: 'Last Moon',
+    src: 'https://player.vimeo.com/video/73686146?color=ffffff',
+    thumb: 'https://secure-a.vimeocdn.com/ts/448/835/448835699_960.jpg'
+  }"
+  :thumb-style="{
+    width: '400px'
+  }"
+/>
+```
+
+### source 的四种值
+
+> 这里需要注意的是, video 和 iframe 必须传递缩略图 或者 使用插槽
+
+```html
+<!-- 字符串(仅图片类型) -->
+<ele-gallery
+  source="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"
+/>
+
+<!-- 字符数组(仅图片类型) -->
+<ele-gallery
+  :source="[
     'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
     'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
   ]"
 />
-<!-- 传递对象 -->
+
+<!-- 对象(所有类型) -->
 <ele-gallery
-  :image="{
+  :source="{
     title: '秀丽山河',
     src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
     thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb.jpg'
   }"
 />
-<!-- 数组对象 -->
+<!-- 对象数组(所有类型) -->
 <ele-gallery
-  :image="[
+  :source="[
     {
       title: '秀丽山河',
       src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
@@ -90,7 +130,7 @@ export default {
 ```html
 <!-- 定制化缩略图样式 -->
 <ele-gallery
-  :image="[
+  :source="[
     'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
     'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
   ]"
@@ -103,7 +143,7 @@ export default {
 
 <!-- 插槽 -->
 <ele-gallery
-  :image="[
+  :source="[
     'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
     'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
   ]"
@@ -126,7 +166,7 @@ export default {
     type: 'card',
     height: '200px'
   }"
-  :image="[
+  :source="[
     'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
     'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
     'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
@@ -141,7 +181,15 @@ export default {
 
 ```js
 props: {
-  image: [String, Array, Object],
+  // 类型(支持图片, 视频, iframe)
+  type: {
+    type: String,
+    default: 'image',
+    validator (value) {
+      return ['image', 'video', 'iframe'].includes(value)
+    }
+  },
+  source: [String, Array, Object],
   // 缩略图样式
   thumbStyle: Object,
   // 轮播图属性

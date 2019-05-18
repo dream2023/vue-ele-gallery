@@ -1,26 +1,59 @@
 <template>
-  <div>
-    <h1>image属性的四种写法</h1>
-    <h2>单张图片</h2>
-    <ele-gallery image="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"></ele-gallery>
-    <h2>多张图片</h2>
+  <div id="box">
+    <h1>type三种类型</h1>
+    <h3>图片类型(默认)</h3>
     <ele-gallery
-      :image="[
+      :thumb-style="{
+        width: '400px'
+      }"
+      source="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"
+    ></ele-gallery>
+    <h3>h5 视频类型</h3>
+    <ele-gallery
+      :source="{
+        title: 'Sintel',
+        src: 'https://archive.org/download/Sintel/sintel-2048-surround.mp4',
+        thumb: 'https://i.imgur.com/MUSw4Zu.jpg'
+      }"
+      :thumb-style="{
+        width: '400px'
+      }"
+      type="video"
+    ></ele-gallery>
+    <h3>iframe 类型</h3>
+    <ele-gallery
+      :source="{
+        title: 'Last Moon',
+        src: 'https://player.vimeo.com/video/73686146?color=ffffff',
+        thumb: 'https://secure-a.vimeocdn.com/ts/448/835/448835699_960.jpg'
+      }"
+      :thumb-style="{
+        width: '400px'
+      }"
+      type="iframe"
+    ></ele-gallery>
+
+    <h1>image属性的四种写法</h1>
+    <h3>单张图片</h3>
+    <ele-gallery source="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"></ele-gallery>
+    <h3>多张图片</h3>
+    <ele-gallery
+      :source="[
         'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
         'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
       ]"
     ></ele-gallery>
-    <h2>单个对象</h2>
+    <h3>单个对象</h3>
     <ele-gallery
-      :image="{
+      :source="{
         title: '秀丽山河',
         src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
         thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_1.jpg'
       }"
     ></ele-gallery>
-    <h2>数组对象</h2>
+    <h3>数组对象</h3>
     <ele-gallery
-      :image="[
+      :source="[
         {
           title: '秀丽山河',
           src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
@@ -37,7 +70,7 @@
     <h1>定制化缩略图</h1>
     <h3>样式自定义</h3>
     <ele-gallery
-      :image="[
+      :source="[
         'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
         'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
       ]"
@@ -49,7 +82,7 @@
     ></ele-gallery>
     <h3>插槽</h3>
     <ele-gallery
-      :image="[
+      :source="[
         'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
         'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
       ]"
@@ -73,7 +106,7 @@
         type: 'card',
         height: '200px'
       }"
-      :image="[
+      :source="[
         'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
         'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
         'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
@@ -87,14 +120,14 @@
 
 <script>
 export default {
-  name: 'App',
-  data () {
-    return {}
-  },
-  methods: {},
-  mounted () {}
+  name: 'App'
 }
 </script>
 
-<style scoped>
+<style>
+#box {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
 </style>
