@@ -8,7 +8,7 @@
       class="ele-gallery-thumb-wrapper"
       v-for="(thumb, index) of thumbs"
     >
-      <slot v-bind:thumb="thumb">
+      <slot v-bind="{thumb, index, source: computedSources[index]}">
         <img
           :key="index"
           :src="thumb"
@@ -116,6 +116,7 @@ export default {
   position: relative;
   margin-right: 8px;
   font-size: 0;
+  cursor: pointer;
 }
 
 .ele-gallery-thumb-icon {
@@ -140,7 +141,6 @@ export default {
   left: 50%;
   top: 50%;
   color: #cfcfcf;
-  cursor: pointer;
   padding: 20px;
   transition: 0.3s;
   transform: translate(-50%, -50%);
@@ -152,8 +152,8 @@ export default {
   border-radius: 5%;
 }
 .ele-gallery-thumb-image {
-  cursor: pointer;
   height: auto;
+  font-size: 0;
   width: 100px;
 }
 </style>

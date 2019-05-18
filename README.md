@@ -144,13 +144,26 @@ export default {
 <!-- 插槽 -->
 <ele-gallery
   :source="[
-    'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-    'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+    {
+      title: '秀丽山河',
+      src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+      thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_1.jpg'
+    },
+    {
+      title: '秀丽山河2',
+      src: 'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
+      thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_2.jpg'
+    }
   ]"
 >
-  <template v-slot:default="{thumb}">
-    <el-card :body-style="{ padding: '12px' }" style="margin-right: 20px;">
+  <template v-slot:default="{thumb, index, source }">
+    <!-- 如果使用插槽, 请注意font-size, 为了原间隙, 父节点设置了font-size: 0 -->
+    <el-card
+      :body-style="{ padding: '12px' }"
+      style="margin-right: 20px;font-size: 16px;text-align: center"
+    >
       <img :src="thumb" style="width: 150px" />
+      <div style="margin-top: 10px;">{{source.title}}</div>
     </el-card>
   </template>
 </ele-gallery>

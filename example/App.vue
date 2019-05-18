@@ -83,19 +83,28 @@
     <h3>插槽</h3>
     <ele-gallery
       :source="[
-        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+        {
+          title: '秀丽山河',
+          src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+          thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_1.jpg'
+        },
+        {
+          title: '秀丽山河2',
+          src: 'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
+          thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_2.jpg'
+        }
       ]"
     >
-      <template v-slot:default="{thumb}">
+      <template v-slot:default="{thumb, index, source }">
         <el-card
           :body-style="{ padding: '12px' }"
-          style="margin-right: 20px;"
+          style="margin-right: 20px;font-size: 16px;text-align: center"
         >
           <img
             :src="thumb"
             style="width: 150px"
           >
+          <div style="margin-top: 10px;">{{source.title}}</div>
         </el-card>
       </template>
     </ele-gallery>
