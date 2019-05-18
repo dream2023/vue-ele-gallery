@@ -43,7 +43,7 @@
       :thumb-style="{
         borderRadius: '3px',
         border: '5px solid black',
-        width: '200px'
+        width: '150px'
       }"
     ></ele-gallery>
 

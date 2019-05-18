@@ -15,10 +15,10 @@
             <li>可以设置缩略图、标题等信息</li>
           </ul>
         </blockquote>
-        <!-- <img
-        :src="`${publicPath}example.gif`"
-        alt="vue-ele-gallery"
-        >-->
+        <img
+          :src="`${publicPath}example.gif`"
+          alt="vue-ele-gallery"
+        >
       </section>
       <section id="install">
         <h2>安装</h2>

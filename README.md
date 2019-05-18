@@ -14,7 +14,7 @@ vue-ele-gallery 利用 element ui 组件库, 打造的画廊组件, 主要特点
 
 ## 效果图
 
-<!-- ![演示图](./public/example.gif) -->
+![演示图](./public/example.gif)
 
 ## 文档和示例
 
