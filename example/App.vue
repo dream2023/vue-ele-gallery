@@ -1,23 +1,24 @@
 <template>
   <div>
-    <!-- 传递单张图片 -->
-    <ele-gallery image="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"/>
-    <!-- 传递多张图片 -->
+    <h1>image属性的四种写法</h1>
+    <h2>单张图片</h2>
+    <ele-gallery image="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"></ele-gallery>
+    <h2>多张图片</h2>
     <ele-gallery
       :image="[
         'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
         'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
       ]"
-    />
-    <!-- 传递对象 -->
+    ></ele-gallery>
+    <h2>单个对象</h2>
     <ele-gallery
       :image="{
         title: '秀丽山河',
         src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
         thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_1.jpg'
       }"
-    />
-    <!-- 数组对象 -->
+    ></ele-gallery>
+    <h2>数组对象</h2>
     <ele-gallery
       :image="[
         {
@@ -31,17 +32,37 @@
           thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_2.jpg'
         }
       ]"
-    />
+    ></ele-gallery>
 
-    <!-- 定制化缩略图样式 -->
-    <ele-gallery :thumbStyle="{
-      width: '200px'
-    }"/>
+    <h1>定制化缩略图样式</h1>
+    <ele-gallery
+      :image="[
+        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+      ]"
+      :thumb-style="{
+        borderRadius: '3px',
+        border: '5px solid black',
+        width: '200px'
+      }"
+    ></ele-gallery>
 
-    <!-- 定制化轮播图属性 -->
-    <ele-gallery :carouselAttrs="{
-      type: 'card'
-    }"/>
+    <h1>定制化轮播图属性</h1>
+    <ele-gallery
+      :carousel-attrs="{
+        interval: 4000,
+        type: 'card',
+        height: '200px'
+      }"
+      :image="[
+        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
+        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
+        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+      ]"
+    ></ele-gallery>
   </div>
 </template>
 

@@ -90,7 +90,13 @@ export default {
 ```html
 <!-- 定制化缩略图样式 -->
 <ele-gallery
-  :thumbStyle="{
+  :image="[
+    'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+    'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+  ]"
+  :thumb-style="{
+    borderRadius: '3px',
+    border: '5px solid black',
     width: '200px'
   }"
 />
@@ -101,9 +107,19 @@ export default {
 ```html
 <!-- 定制化轮播图属性 -->
 <ele-gallery
-  :carouselAttrs="{
-    type: 'card'
+  :carousel-attrs="{
+    interval: 4000,
+    type: 'card',
+    height: '200px'
   }"
+  :image="[
+    'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+    'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
+    'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+    'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
+    'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
+    'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+  ]"
 />
 ```
 

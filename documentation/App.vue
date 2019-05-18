@@ -52,13 +52,61 @@
       <section id="example">
         <h2>示例</h2>
         <div>
-          <h3>最简单使用</h3>
+          <h3>image属性的四种写法</h3>
+          <iframe
+            allowfullscreen="true"
+            allowtransparency="true"
+            frameborder="no"
+            height="265"
+            scrolling="no"
+            src="//codepen.io/dream2023/embed/YbQaMj/?height=265&theme-id=dark&default-tab=html,result"
+            style="width: 100%;"
+            title="vue-ele-gallery"
+          >
+            See the Pen
+            <a href="https://codepen.io/dream2023/pen/YbQaMj/">vue-ele-gallery</a> by 二当家的
+            (
+            <a href="https://codepen.io/dream2023">@dream2023</a>) on
+            <a href="https://codepen.io">CodePen</a>.
+          </iframe>
         </div>
         <div>
           <h3>定制化缩略图</h3>
+          <iframe
+            allowfullscreen="true"
+            allowtransparency="true"
+            frameborder="no"
+            height="265"
+            scrolling="no"
+            src="//codepen.io/dream2023/embed/vwZrgG/?height=265&theme-id=dark&default-tab=html,result"
+            style="width: 100%;"
+            title="vue-ele-gallery 缩略图属性"
+          >
+            See the Pen
+            <a href="https://codepen.io/dream2023/pen/vwZrgG/">vue-ele-gallery 缩略图属性</a> by 二当家的
+            (
+            <a href="https://codepen.io/dream2023">@dream2023</a>) on
+            <a href="https://codepen.io">CodePen</a>.
+          </iframe>
         </div>
         <div>
           <h3>定制化轮播图</h3>
+          <iframe
+            allowfullscreen="true"
+            allowtransparency="true"
+            frameborder="no"
+            height="265"
+            scrolling="no"
+            src="//codepen.io/dream2023/embed/mYwKwO/?height=265&theme-id=dark&default-tab=html,result"
+            style="width: 100%;"
+            title="vue-ele-gallery 定制化轮播图属性"
+          >
+            See the Pen
+            <a href="https://codepen.io/dream2023/pen/mYwKwO/">vue-ele-gallery 定制化轮播图属性</a> by 二当家的
+            (
+            <a href="https://codepen.io/dream2023">@dream2023</a>) on
+            <a href="https://codepen.io">CodePen</a>.
+          </iframe>
         </div>
       </section>
       <section id="props">
