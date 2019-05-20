@@ -152,7 +152,8 @@ export default {
   border-radius: 5%;
 }
 .ele-gallery-thumb-image {
-  height: auto;
+  height: 100px;
+  object-fit: cover;
   font-size: 0;
   width: 100px;
 }

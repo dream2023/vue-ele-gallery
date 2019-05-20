@@ -1,6 +1,7 @@
 <template>
   <el-dialog
     :visible.sync="isShowPreview"
+    append-to-body
     style="text-align: center"
   >
     <div slot="title">{{title}}</div>
