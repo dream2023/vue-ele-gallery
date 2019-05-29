@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="source">
     <!-- 预览图 -->
     <div
       :class="'ele-gallery-thumb-wrapper_' + type"
