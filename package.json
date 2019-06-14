@@ -1,11 +1,11 @@
 {
   "name": "vue-ele-gallery",
   "description": "利用 element ui 组件库构成的画廊组件",
-  "version": "1.2.5",
+  "version": "2.0.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:lib": "vue build -t lib --name vue-ele-upload-image -d ./dist/ ./src/index.js",
+    "build:lib": "vue build -t lib --name vue-ele-gallery -d ./dist/ ./src/index.js",
     "build": "npm run lint & npm run build:lib",
     "lint": "vue-cli-service lint"
   },

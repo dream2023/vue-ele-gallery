@@ -41,6 +41,10 @@ export default {
 }
 ```
 
+## 在线示例
+
+[https://codepen.io/dream2023/pen/vwZrgG](https://codepen.io/dream2023/pen/vwZrgG)
+
 ## 示例
 
 ### 基本使用方式
