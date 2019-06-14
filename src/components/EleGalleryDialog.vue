@@ -4,7 +4,7 @@
     append-to-body
     style="text-align: center"
   >
-    <div slot="title">{{title}}</div>
+    <div slot="title">{{sourceTitle || title}}</div>
     <!-- 视频 -->
     <template v-if="type === 'video'">
       <video
@@ -69,12 +69,13 @@ export default {
   name: 'ele-gallery-dialog',
   props: {
     type: String,
+    title: String,
     sources: Array,
     carouselAttrs: Object
   },
   data () {
     return {
-      title: '',
+      sourceTitle: '',
       initialIndex: 0,
       isShowPreview: false
     }
@@ -83,13 +84,13 @@ export default {
     startPreview (index) {
       this.isShowPreview = true
       this.initialIndex = index
-      this.title = this.sources[index].title
+      this.sourceTitle = this.sources[index].title
     },
     handleCarouselChange (index) {
       if (this.sources[index] && this.sources[index].title) {
-        this.title = this.sources[index].title
+        this.sourceTitle = this.sources[index].title
       } else {
-        this.title = ''
+        this.sourceTitle = ''
       }
     }
   }

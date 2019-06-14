@@ -17,5 +17,3 @@ babel.config.js
 dist/demo.html
 .env.dev-doc
 .env.dev-example
-dist/vue-ele-gallery.common.js
-dist/vue-ele-gallery.common.js.map

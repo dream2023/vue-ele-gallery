@@ -228,7 +228,9 @@ props: {
   // 轮播图属性
   carouselAttrs: Object,
   // 删除函数
-  removeFn: Function
+  removeFn: Function,
+  // 统一的弹框标题
+  title: String
 }
 ```
 

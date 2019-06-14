@@ -60,6 +60,7 @@
     <ele-gallery-dialog
       :carouselAttrs="carouselAttrs"
       :sources="computedSources"
+      :title="title"
       :type="type"
       ref="dialog"
     />
@@ -101,7 +102,9 @@ export default {
     // 轮播图属性
     carouselAttrs: Object,
     // 删除函数
-    removeFn: Function
+    removeFn: Function,
+    // 统一的弹框标题
+    title: String
   },
   components: {
     EleGalleryDialog
