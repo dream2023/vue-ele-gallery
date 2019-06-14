@@ -1,27 +1,60 @@
 <template>
-  <div v-if="source">
+  <div
+    class="ele-gallery"
+    v-if="source"
+  >
     <!-- 预览图 -->
-    <div
-      :class="'ele-gallery-thumb-wrapper_' + type"
-      :key="index"
-      @click="handlePreview(index)"
-      class="ele-gallery-thumb-wrapper"
-      v-for="(thumb, index) of thumbs"
-    >
-      <slot v-bind="{thumb, index, source: computedSources[index]}">
-        <img
-          :key="index"
-          :src="thumb"
-          :style="thumbStyle"
-          class="ele-gallery-thumb-image"
-        >
-        <div
-          class="ele-gallery-thumb-icon"
-          v-if="type !== 'image'"
-        >
-          <i class="el-icon-video-play"></i>
-        </div>
-      </slot>
+    <div class="el-upload-list el-upload-list--picture-card">
+      <li
+        :key="index"
+        class="el-upload-list__item"
+        v-for="(source, index) of computedSources"
+      >
+        <slot v-bind="{source: source, index: index}">
+          <el-image
+            :lazy="lazy"
+            :src="source.thumb"
+            :style="computedStyle"
+            fit="cover"
+            v-if="source.type === 'image'"
+          />
+          <video
+            :src="source.thumb"
+            :style="computedStyle"
+            v-else-if="source.type === 'video'"
+          ></video>
+          <div
+            :style="computedStyle"
+            class="ele-gallery-iframe embed-responsive embed-responsive-16by9"
+            v-else-if="source.type === 'iframe'"
+          >
+            <iframe
+              :src="source.thumb"
+              allowfullscreen="true"
+              border="0"
+              frameborder="no"
+              framespacing="0"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </slot>
+
+        <span class="el-upload-list__item-actions">
+          <span @click="handlePreview(index, source)">
+            <i :class="viewClass"></i>
+          </span>
+          <span
+            @click="handleRemove(index)"
+            v-if="removeFn"
+          >
+            <i class="el-icon-delete"></i>
+          </span>
+          <slot
+            name="action"
+            v-bind="{source: source, index: index}"
+          />
+        </span>
+      </li>
     </div>
 
     <ele-gallery-dialog
@@ -47,16 +80,56 @@ export default {
         return ['image', 'video', 'iframe'].includes(value)
       }
     },
+    // 缩略图大小, 宽 === 高时, 简略写法
+    size: Number,
+    // 缩略图宽度, 当给定width时, 会覆盖size的值
+    width: Number,
+    // 缩略图高度, 当给定height时, 会覆盖size值
+    height: Number,
+    // 缩略图是否懒加载
+    lazy: {
+      type: Boolean,
+      default: false
+    },
+    // 源
     source: [String, Array, Object],
+    // 缩略图后缀
+    // 当type为image时, 且未指定thumb, 可通过thumbSuffix设置缩略图
+    thumbSuffix: String,
     // 缩略图样式
     thumbStyle: Object,
     // 轮播图属性
-    carouselAttrs: Object
+    carouselAttrs: Object,
+    // 删除函数
+    removeFn: Function
   },
   components: {
     EleGalleryDialog
   },
   computed: {
+    viewClass () {
+      if (this.type === 'video' || this.type === 'iframe') {
+        return 'el-icon-video-play'
+      } else {
+        return 'el-icon-zoom-in'
+      }
+    },
+    computedStyle () {
+      let width = this.width || this.size
+      let height = this.height || this.size
+      if (this.type === 'image') {
+        width = width ? width + 'px' : '150px'
+        height = height ? height + 'px' : '150px'
+      } else if (this.type === 'video') {
+        width = width ? width + 'px' : '360px'
+        height = height ? height + 'px' : 'auto'
+      } else if (this.type === 'iframe') {
+        width = width ? width + 'px' : '360px'
+        height = height ? height + 'px' : 'auto'
+      }
+
+      return Object.assign({}, { width, height, display: 'block' }, this.thumbStyle)
+    },
     // 缩略图
     thumbs () {
       return this.computedSources.map((item) => {
@@ -94,67 +167,65 @@ export default {
     handlePreview (index) {
       this.$refs.dialog.startPreview(index)
     },
+    handleRemove (index) {
+      this.removeFn(index)
+    },
     // 获取字符串形式来源
-    getStringSource (image) {
+    getStringSource (src) {
+      let thumb = src
+      if (this.type === 'image' && this.thumbSuffix) {
+        thumb += this.thumbSuffix
+      }
       return {
-        src: image,
-        thumb: image
+        type: this.type,
+        src: src,
+        thumb: thumb
       }
     },
     // 获取对象形式来源
-    getObjectSource (image) {
-      image.thumb = image.thumb || image.src
-      return image
+    getObjectSource (source) {
+      source.type = source.thumb ? 'image' : this.type
+      source.thumb = source.thumb || source.src
+      return source
     }
   }
 }
 </script>
 
 <style>
-.ele-gallery-thumb-wrapper {
-  display: inline-block;
-  position: relative;
-  margin-right: 8px;
-  font-size: 0;
-  cursor: pointer;
+.ele-gallery .el-upload-list__item {
+  width: auto;
+  height: auto;
 }
 
-.ele-gallery-thumb-icon {
+.ele-gallery-image {
+  width: 100%;
+}
+
+.ele-gallery-iframe.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.ele-gallery-iframe.embed-responsive .embed-responsive-item,
+.ele-gallery-iframe.embed-responsive iframe,
+.ele-gallery-iframe.embed-responsive embed,
+.ele-gallery-iframe.embed-responsive object,
+.ele-gallery-iframe.embed-responsive video {
   position: absolute;
-  left: 0;
-  right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0);
-  text-align: center;
-  line-height: 100%;
-  vertical-align: middle;
-  font-size: 50px;
-  transition: all 0.2s;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
-.ele-gallery-thumb-icon:hover {
-  background: rgba(0, 0, 0, 0.3);
+.ele-gallery-iframe.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
 }
-
-.ele-gallery-thumb-wrapper .el-icon-video-play {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  color: #cfcfcf;
-  padding: 20px;
-  transition: 0.3s;
-  transform: translate(-50%, -50%);
-}
-.ele-gallery-thumb-wrapper .el-icon-video-play:hover {
-  color: #ffffff;
-}
-.ele-gallery-thumb-wrapper_image .ele-gallery-thumb-image {
-  border-radius: 5%;
-}
-.ele-gallery-thumb-image {
-  height: 100px;
-  object-fit: cover;
-  font-size: 0;
-  width: 100px;
+.ele-gallery-iframe.embed-responsive-4by3 {
+  padding-bottom: 75%;
 }
 </style>

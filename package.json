@@ -1,15 +1,12 @@
 {
   "name": "vue-ele-gallery",
   "description": "利用 element ui 组件库构成的画廊组件",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "private": false,
   "scripts": {
-    "build:lib": "vue build -t lib --name vue-ele-gallery -d ./dist/ ./src/index.js",
-    "build:docs": "vue-cli-service build",
-    "build": "npm run lint && npm run build:docs && npm run build:lib",
-    "serve": "npm run doc",
-    "doc": "vue-cli-service serve --mode dev-doc",
-    "example": "vue-cli-service serve --mode dev-example",
+    "serve": "vue-cli-service serve",
+    "build:lib": "vue build -t lib --name vue-ele-upload-image -d ./dist/ ./src/index.js",
+    "build": "npm run lint & npm run build:lib",
     "lint": "vue-cli-service lint"
   },
   "repository": {
@@ -17,7 +14,7 @@
     "url": "https://github.com/dream2023/vue-ele-gallery"
   },
   "main": "dist/vue-ele-gallery.umd.min.js",
-  "homepage": "https://dream2023.github.io/vue-ele-gallery/",
+  "homepage": "https://github.com/dream2023/vue-ele-gallery/",
   "keywords": [
     "vue-ele-gallery",
     "vue",
@@ -33,8 +30,7 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "core-js": "^2.6.5",
-    "easy-github-pages": "^1.2.0",
-    "element-ui": "^2.8.2",
+    "element-ui": "^2.9.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",

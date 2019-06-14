@@ -1,13 +1,7 @@
-const path = require('path')
-const isDevelopment = process.env.NODE_ENV === 'development'
-const isExample = process.env.IS_EXAMPLE === 'true'
-
 module.exports = {
-  publicPath: isDevelopment ? '/' : '/vue-ele-gallery/',
-  outputDir: path.resolve(__dirname, './docs/'),
-  css: { extract: isDevelopment },
+  css: { extract: false },
   configureWebpack: {
-    entry: isExample ? './example/main.js' : './documentation/main.js',
+    entry: './example/main.js',
     output: {
       libraryExport: 'default'
     }

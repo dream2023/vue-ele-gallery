@@ -1,114 +1,92 @@
 <template>
   <div id="box">
-    <h1>type三种类型</h1>
-    <h3>图片类型(默认)</h3>
+    <h2>type三种类型</h2>
+    <h4>图片类型(默认)</h4>
+    <ele-gallery source="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></ele-gallery>
+    <h4>视频类型</h4>
     <ele-gallery
-      :thumb-style="{
-        width: '400px'
-      }"
-      source="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"
-    ></ele-gallery>
-    <h3>h5 视频类型</h3>
-    <ele-gallery
-      :source="{
-        title: 'Sintel',
-        src: 'https://archive.org/download/Sintel/sintel-2048-surround.mp4',
-        thumb: 'https://i.imgur.com/MUSw4Zu.jpg'
-      }"
-      :thumb-style="{
-        width: '400px'
-      }"
+      source="https://s3.pstatp.com/aweme/resource/web/static/image/index/tvc-v2_30097df.mp4"
       type="video"
     ></ele-gallery>
-    <h3>iframe 类型</h3>
+    <h4>iframe</h4>
     <ele-gallery
-      :source="{
-        title: 'Last Moon',
-        src: 'https://player.vimeo.com/video/73686146?color=ffffff',
-        thumb: 'https://secure-a.vimeocdn.com/ts/448/835/448835699_960.jpg'
-      }"
-      :thumb-style="{
-        width: '400px'
-      }"
+      source="https://player.vimeo.com/video/73686146?color=ffffff"
       type="iframe"
     ></ele-gallery>
 
-    <h1>image属性的四种写法</h1>
-    <h3>单张图片</h3>
-    <ele-gallery source="https://dream2023.github.io/vue-ele-gallery/example_1.jpg"></ele-gallery>
-    <h3>多张图片</h3>
+    <h2>source属性的四种写法</h2>
+    <h4>单个(字符串)</h4>
+    <ele-gallery source="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></ele-gallery>
+    <h4>多个(数组)</h4>
     <ele-gallery
       :source="[
-        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+        'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+        'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg'
       ]"
     ></ele-gallery>
-    <h3>单个对象</h3>
+    <h4>单个(对象, 用于指定弹窗标题和缩略图)</h4>
     <ele-gallery
       :source="{
         title: '秀丽山河',
-        src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-        thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_1.jpg'
+        src: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+        thumb: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
       }"
     ></ele-gallery>
-    <h3>数组对象</h3>
+    <h4>多个(对象, 用于指定弹窗标题和缩略图)</h4>
     <ele-gallery
       :source="[
         {
           title: '秀丽山河',
-          src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-          thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_1.jpg'
+          src: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+          thumb: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
         },
         {
           title: '秀丽山河2',
-          src: 'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
-          thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_2.jpg'
+          src: 'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+          thumb: 'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg'
         }
       ]"
     ></ele-gallery>
 
-    <h1>定制化缩略图</h1>
-    <h3>样式自定义</h3>
+    <h2>定制化缩略图</h2>
+    <h4>样式自定义</h4>
     <ele-gallery
+      :height="180"
       :source="[
-        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+        'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+        'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg'
       ]"
       :thumb-style="{
-        borderRadius: '3px',
-        border: '5px solid black',
-        width: '150px'
+        borderRadius: '3px'
       }"
+      :width="300"
     ></ele-gallery>
-    <h3>插槽</h3>
+    <h4>插槽</h4>
     <ele-gallery
       :source="[
         {
           title: '秀丽山河',
-          src: 'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-          thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_1.jpg'
+          src: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+          thumb: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
         },
         {
           title: '秀丽山河2',
-          src: 'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
-          thumb: 'https://dream2023.github.io/vue-ele-gallery/example_thumb_2.jpg'
+          src: 'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+          thumb: 'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg'
         }
       ]"
     >
-      <template v-slot:default="{thumb, index, source }">
-        <el-card
-          :body-style="{ padding: '12px' }"
-          style="margin-right: 20px;font-size: 16px;text-align: center"
-        >
+      <template v-slot:default="{index, source }">
+        <el-card style="text-align: center">
           <img
-            :src="thumb"
+            :src="source.thumb"
             style="width: 150px"
           >
           <div style="margin-top: 10px;">{{source.title}}</div>
         </el-card>
       </template>
     </ele-gallery>
-    <h1>定制化轮播图属性</h1>
+    <h2>定制化轮播图属性</h2>
     <ele-gallery
       :carousel-attrs="{
         interval: 4000,
@@ -116,20 +94,42 @@
         height: '200px'
       }"
       :source="[
-        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
-        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg',
-        'https://dream2023.github.io/vue-ele-gallery/example_1.jpg',
-        'https://dream2023.github.io/vue-ele-gallery/example_2.jpg'
+        'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+        'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+        'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+        'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+        'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
+        'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg'
       ]"
     ></ele-gallery>
+    <h2>其他</h2>
+    <h4>删除</h4>
+    <ele-gallery
+      :remove-fn="handleRemove"
+      source="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    ></ele-gallery>
+    <h4>action 插槽</h4>
+    <ele-gallery source="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg">
+      <template v-slot:action="{index, source}">
+        <span>
+          <i class="el-icon-folder-opened"></i>
+        </span>
+        <span>
+          <i class="el-icon-headset"></i>
+        </span>
+      </template>
+    </ele-gallery>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    handleRemove (index) {
+      console.log(index)
+    }
+  }
 }
 </script>
 
