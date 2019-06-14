@@ -59,6 +59,7 @@
 
     <ele-gallery-dialog
       :carouselAttrs="carouselAttrs"
+      :sliceSingle="sliceSingle"
       :sources="computedSources"
       :title="title"
       :type="type"
@@ -104,7 +105,12 @@ export default {
     // 删除函数
     removeFn: Function,
     // 统一的弹框标题
-    title: String
+    title: String,
+    // 强制多张图片按照单张显示
+    sliceSingle: {
+      type: Boolean,
+      default: false
+    }
   },
   components: {
     EleGalleryDialog
@@ -202,7 +208,8 @@ export default {
 }
 
 .ele-gallery-image {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .ele-gallery-iframe.embed-responsive {

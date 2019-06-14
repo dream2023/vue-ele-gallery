@@ -2,7 +2,10 @@
   <div id="box">
     <h2>type三种类型</h2>
     <h4>图片类型(默认)</h4>
-    <ele-gallery source="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></ele-gallery>
+    <ele-gallery
+      source="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+      title="图片类型"
+    ></ele-gallery>
     <h4>视频类型</h4>
     <ele-gallery
       source="https://s3.pstatp.com/aweme/resource/web/static/image/index/tvc-v2_30097df.mp4"
@@ -19,6 +22,7 @@
     <ele-gallery source="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></ele-gallery>
     <h4>多个(数组)</h4>
     <ele-gallery
+      :sliceSingle="true"
       :source="[
         'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
         'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg'

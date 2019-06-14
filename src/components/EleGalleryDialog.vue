@@ -37,9 +37,9 @@
     <template v-else-if="type === 'image'">
       <!-- 单张图片 -->
       <img
-        :src="sources[0].src"
+        :src="sources[initialIndex].src"
         class="ele-gallery-image"
-        v-if="sources.length === 1"
+        v-if="sliceSingle || sources.length === 1"
       >
 
       <!-- 多张图片 -->
@@ -71,6 +71,10 @@ export default {
     type: String,
     title: String,
     sources: Array,
+    sliceSingle: {
+      type: Boolean,
+      default: false
+    },
     carouselAttrs: Object
   },
   data () {
