@@ -205,6 +205,7 @@ export default {
 .ele-gallery .el-upload-list__item {
   width: auto;
   height: auto;
+  margin: 0 8px 0 0;
 }
 
 .ele-gallery-image {
