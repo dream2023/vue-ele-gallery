@@ -202,7 +202,7 @@ export default {
 </script>
 
 <style>
-.ele-gallery .el-upload-list__item {
+.ele-gallery .el-upload-list--picture-card .el-upload-list__item {
   width: auto;
   height: auto;
   margin: 0 8px 0 0;
