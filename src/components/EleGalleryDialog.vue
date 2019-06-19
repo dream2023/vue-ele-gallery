@@ -39,7 +39,7 @@
       <img
         :src="sources[initialIndex].src"
         class="ele-gallery-image"
-        v-if="sliceSingle || sources.length === 1"
+        v-if="(sliceSingle && sources[initialIndex]) || sources.length === 1"
       >
 
       <!-- 多张图片 -->
