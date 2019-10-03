@@ -9,12 +9,12 @@
     ></ele-gallery>
     <h4>视频类型</h4>
     <ele-gallery
-      source="https://s3.pstatp.com/aweme/resource/web/static/image/index/tvc-v2_30097df.mp4"
+      source="https://vjs.zencdn.net/v/oceans.mp4"
       type="video"
     ></ele-gallery>
     <h4>iframe</h4>
     <ele-gallery
-      source="https://player.vimeo.com/video/73686146?color=ffffff"
+      source="https://player.bilibili.com/player.html?aid=68862905&cid=119344504&page=1"
       type="iframe"
     ></ele-gallery>
 
@@ -86,7 +86,7 @@
           <img
             :src="source.thumb"
             style="width: 150px"
-          >
+          />
           <div style="margin-top: 10px;">{{source.title}}</div>
         </el-card>
       </template>
