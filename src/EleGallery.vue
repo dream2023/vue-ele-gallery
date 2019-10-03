@@ -206,6 +206,7 @@ export default {
   width: auto;
   height: auto;
   margin: 0 8px 0 0;
+  font-size: 0;
 }
 
 .ele-gallery-image {
