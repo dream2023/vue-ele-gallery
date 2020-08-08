@@ -2,6 +2,8 @@
   <el-dialog
     :visible.sync="isShowPreview"
     append-to-body
+    @open="isShowCarousel = true"
+    @closed="isShowCarousel = false"
     style="text-align: center"
   >
     <div slot="title">{{sourceTitle || title}}</div>
@@ -41,25 +43,26 @@
         class="ele-gallery-image"
         v-if="(sliceSingle && sources[initialIndex]) || sources.length === 1"
       >
-
       <!-- 多张图片 -->
-      <el-carousel
-        :initial-index="initialIndex"
-        @change="handleCarouselChange"
-        indicator-position="outside"
-        v-bind="carouselAttrs"
-        v-else
-      >
-        <el-carousel-item
-          :key="index"
-          v-for="(image, index) in sources"
+      <template v-else>
+        <el-carousel
+          :initial-index="initialIndex"
+          @change="handleCarouselChange"
+          indicator-position="outside"
+          v-bind="carouselAttrs"
+          v-if="isShowCarousel"
         >
-          <img
-            :src="image.src"
-            class="ele-gallery-image"
+          <el-carousel-item
+            :key="index"
+            v-for="(image, index) in sources"
           >
-        </el-carousel-item>
-      </el-carousel>
+            <img
+              :src="image.src"
+              class="ele-gallery-image"
+            >
+          </el-carousel-item>
+        </el-carousel>
+      </template>
     </template>
   </el-dialog>
 </template>
@@ -79,6 +82,7 @@ export default {
   },
   data () {
     return {
+      isShowCarousel: false,
       sourceTitle: '',
       initialIndex: 0,
       isShowPreview: false

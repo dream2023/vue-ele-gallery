@@ -1,7 +1,7 @@
 {
   "name": "vue-ele-gallery",
   "description": "利用 element ui 组件库构成的画廊组件",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -30,7 +30,7 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "core-js": "^2.6.5",
-    "element-ui": "^2.9.1",
+    "element-ui": "^2.13.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",
